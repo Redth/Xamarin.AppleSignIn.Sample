@@ -27,14 +27,14 @@ namespace XamarinFormsAppleSignIn.iOS.Services
 
         public AppleSignInServiceiOS()
         {
-            if (Is13)
+            if (!Is13)
                 webSignInService = new WebAppleSignInService();
         }
 
         public async Task<AppleAccount> SignInAsync()
         {
             // Fallback to web for older iOS versions
-            if (Is13)
+            if (!Is13)
                 return await webSignInService.SignInAsync();
 
             AppleAccount appleAccount = default;
@@ -43,7 +43,7 @@ namespace XamarinFormsAppleSignIn.iOS.Services
 			var provider = new ASAuthorizationAppleIdProvider();
 			var req = provider.CreateRequest();
 
-			authManager = new AuthManager(Platform.PresentingWindow);
+			authManager = new AuthManager(UIApplication.SharedApplication.KeyWindow);
 
 			req.RequestedScopes = new[] { ASAuthorizationScope.FullName, ASAuthorizationScope.Email };
 			var controller = new ASAuthorizationController(new[] { req });
@@ -59,8 +59,8 @@ namespace XamarinFormsAppleSignIn.iOS.Services
 				return null;
 
 			appleAccount = new AppleAccount();
-			appleAccount.IdToken = JwtToken.Parse(new NSString(creds.IdentityToken, NSStringEncoding.UTF8).ToString());
-			appleAccount.Email = cred.Email;
+			appleAccount.IdToken = JwtToken.Decode(new NSString(creds.IdentityToken, NSStringEncoding.UTF8).ToString());
+			appleAccount.Email = creds.Email;
 			appleAccount.UserId = creds.User;
 			appleAccount.Name = NSPersonNameComponentsFormatter.GetLocalizedString(creds.FullName, NSPersonNameComponentsFormatterStyle.Default, NSPersonNameComponentsFormatterOptions.Phonetic);
 			appleAccount.RealUserStatus = creds.RealUserStatus.ToString();
