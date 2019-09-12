@@ -110,7 +110,7 @@ Keep this key in a safe place.  We will use it later as the `P8FileContents`.
 
 In iOS 13 and newer, Apple has native API's to help Authenticate users with Apple Sign In.
 
-The [AppleSignInServiceiOS.cs](XamarinFormsAppleSignIn\XamarinFormsAppleSignIn.iOS\Services\AppleSignInServiceiOS.cs) file demonstrates how to use the native API's.
+The [AppleSignInServiceiOS.cs](XamarinFormsAppleSignIn/XamarinFormsAppleSignIn.iOS/Services/AppleSignInServiceiOS.cs) file demonstrates how to use the native API's.
 
 ## iOS 13+ Setup
 
