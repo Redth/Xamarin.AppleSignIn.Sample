@@ -112,6 +112,25 @@ In iOS 13 and newer, Apple has native API's to help Authenticate users with Appl
 
 The [AppleSignInServiceiOS.cs](XamarinFormsAppleSignIn\XamarinFormsAppleSignIn.iOS\Services\AppleSignInServiceiOS.cs) file demonstrates how to use the native API's.
 
+## iOS 13+ Setup
+
+You will need to add a new entitlement to your app.  Make sure you add the following to your entitlements file:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>com.apple.developer.applesignin</key>
+	<array>
+		<string>Default</string>
+	</array>
+</dict>
+</plist>
+```
+
+Note: For testing of your iOS app, ensure you are signing with a certificate and provisioning profile for the App ID you enabled Apple Sign In for.
+
 ## Android, UWP, and older iOS versions
 
 Apple also supports a version of OpenID/OpenAuth for other platforms.
