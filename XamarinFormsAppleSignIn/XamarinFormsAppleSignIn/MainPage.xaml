@@ -15,7 +15,7 @@
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
 
-        <local:AppleSignInButton Text="Sign in with Apple" SignIn="SignIn_Event" BackgroundColor="Black" CornerRadius="5" TextColor="White" />
+        <local:AppleSignInButton SignIn="SignIn_Event" ButtonStyle="Black" />
     </StackLayout>
 
 </ContentPage>

@@ -12,7 +12,9 @@ using AuthenticationServices;
 
 using XamarinFormsAppleSignIn.Services;
 
+#if __IOS__13
 [assembly: Xamarin.Forms.Dependency(typeof(XamarinFormsAppleSignIn.iOS.Services.AppleSignInServiceiOS))]
+#endif
 
 namespace XamarinFormsAppleSignIn.iOS.Services
 {
