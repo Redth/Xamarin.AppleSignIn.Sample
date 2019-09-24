@@ -19,7 +19,7 @@ namespace XamarinFormsAppleSignIn
             InitializeComponent();
         }
 
-        private async void Button_Clicked(object sender, EventArgs e)
+        private async void SignIn_Event(object sender, EventArgs e)
         {
             var appleSignIn = Xamarin.Forms.DependencyService.Get<IAppleSignInService>();
 
